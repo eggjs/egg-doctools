@@ -13,20 +13,21 @@ describe('test/build.test.js', () => {
   describe('egg-doctools build --help', () => {
     it('egg-doctools build --help', done => {
       coffee
-        .fork(bin, [ 'build', '--help' ], { cwd })
+        .fork(bin, ['build', '--help'], { cwd })
         .expect('stdout', /Options:/)
         .expect('code', 0)
         .end(done);
     });
   });
 
-  describe('egg-doctools build', () => {
+  describe('egg-doctools build --jsdoc=true', () => {
+    const apiPath = path.join(cwd, 'docs/.vuepress/public/api');
+    const sitePath = path.join(cwd, 'dest');
+
     let proc;
 
-    const target = path.join(cwd, 'dest');
-
     before(async () => {
-      const c = coffee.fork(bin, [ 'build' ], { cwd });
+      const c = coffee.fork(bin, ['build', '--jsdoc=true'], { cwd });
       // c.debug();
       c.coverage(false);
       c.expect('code', 0).end();
@@ -41,13 +42,20 @@ describe('test/build.test.js', () => {
     });
 
     after(async () => {
-      await rimraf(target);
+      await rimraf(apiPath);
+      await rimraf(sitePath);
     });
 
-    it('should generate index', async () => {
-      const docPath = path.join(target, 'index.html');
+    it('should generate site index page', async () => {
+      const docPath = path.join(sitePath, 'index.html');
       const content = await fs.readFile(docPath, 'utf8');
       assert(content.includes('test-files'));
+    });
+
+    it('should generate api index page', async () => {
+      const docPath = path.join(sitePath, '/api/index.html');
+      const content = await fs.readFile(docPath, 'utf8');
+      assert(content.includes('Documentation generated'));
     });
   });
 });

@@ -2,7 +2,7 @@
 
 const path = require('path');
 const coffee = require('coffee');
-const { sleep } = require('mz-modules');
+const { sleep, rimraf } = require('mz-modules');
 const request = require('supertest');
 
 const bin = require.resolve('../bin/egg-doctools.js');
@@ -19,13 +19,13 @@ describe('test/server.test.js', () => {
     });
   });
 
-  describe('egg-doctools dev', () => {
+  describe('egg-doctools dev --jsdoc=true', () => {
     const url = 'http://localhost:8080';
-
+    const apiPath = path.join(cwd, 'docs/.vuepress/public/api');
     let proc;
 
     before(async () => {
-      const c = coffee.fork(bin, [ 'dev' ], { cwd });
+      const c = coffee.fork(bin, [ 'dev', '--jsdoc=true' ], { cwd });
       // c.debug();
       c.coverage(false);
       c.expect('code', 0).end();
@@ -39,9 +39,19 @@ describe('test/server.test.js', () => {
       proc.kill();
     });
 
-    it('request index', () => {
+    after(async () => {
+      await rimraf(apiPath);
+    });
+
+    it('request site index page', () => {
       return request(url)
         .get('/')
+        .expect(200);
+    });
+
+    it('request api index page', () => {
+      return request(url)
+        .get('/api/index.html')
         .expect(200);
     });
   });
