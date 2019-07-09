@@ -1,6 +1,6 @@
 'use strict';
 
-const Command = require('common-bin');
+const Command = require('common-bin-plus');
 const path = require('path');
 
 class MainCommand extends Command {

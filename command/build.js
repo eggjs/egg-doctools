@@ -1,9 +1,10 @@
 'use strict';
 
 const path = require('path');
-const Command = require('common-bin');
+const Command = require('common-bin-plus');
 const { createApp } = require('vuepress');
 const vuepressConfig = require('../config');
+const buildJsdoc = require('../lib/jsdoc');
 
 class BuildCommand extends Command {
   constructor(rawArgv) {
@@ -17,16 +18,19 @@ class BuildCommand extends Command {
         type: 'string',
         description: 'target dir',
       },
-
       config: {
         type: 'string',
         description: 'config file',
+      },
+      jsdoc: {
+        type: 'boolean',
+        description: 'enable jsdoc',
       },
     });
   }
 
   async run({ cwd, argv }) {
-    const { src, dest } = argv;
+    const { src, dest, jsdoc } = argv;
     const sourceDir = src || path.join(cwd, 'docs');
     const targetDir = dest || path.join(cwd, 'dest');
 
@@ -34,6 +38,18 @@ class BuildCommand extends Command {
       sourceDir,
       dest: targetDir,
     });
+
+    // JSDOC
+    this.logger.info('Build API Documents');
+    if (jsdoc) {
+      await buildJsdoc({
+        baseDir: cwd,
+        target: path.join(cwd, 'docs/.vuepress/public/api'),
+      });
+    }
+
+    // SITE
+    this.logger.info('Build Documents');
 
     const app = createApp(options);
     await app.process();
