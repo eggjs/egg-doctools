@@ -13,7 +13,7 @@ describe('test/build.test.js', () => {
   describe('egg-doctools build --help', () => {
     it('egg-doctools build --help', done => {
       coffee
-        .fork(bin, ['build', '--help'], { cwd })
+        .fork(bin, [ 'build', '--help' ], { cwd })
         .expect('stdout', /Options:/)
         .expect('code', 0)
         .end(done);
@@ -27,7 +27,7 @@ describe('test/build.test.js', () => {
     let proc;
 
     before(async () => {
-      const c = coffee.fork(bin, ['build', '--jsdoc=true'], { cwd });
+      const c = coffee.fork(bin, [ 'build', '--jsdoc=true' ], { cwd });
       // c.debug();
       c.coverage(false);
       c.expect('code', 0).end();

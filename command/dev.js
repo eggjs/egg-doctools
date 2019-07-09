@@ -35,7 +35,7 @@ class DevCommand extends Command {
     if (jsdoc) {
       await buildJsdoc({
         baseDir: cwd,
-        target: path.join(cwd, 'docs/.vuepress/public/api'),
+        target: path.join(sourceDir, '.vuepress/public/api'),
       });
     }
 
