@@ -1,3 +1,4 @@
+lib/jsdoc_template/
 node_modules/
 coverage/
 dist/
