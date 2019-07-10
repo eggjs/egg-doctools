@@ -1,5 +1,14 @@
-# Welcome to  👋
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+# Doctools &middot; [![GitHub license][license-square]][license-url]
+
+[![Egg.js][egg-square]][egg-url]
+[![NPM Version][npm-square]][npm-url]
+
+[license-square]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[egg-square]: https://img.shields.io/badge/Awesome-Egg.js-ff69b4.svg?style=flat-square
+[npm-square]: https://img.shields.io/npm/v/@eggjs/doctools.svg?style=flat-square
+[license-url]: https://github.com/eggjs/egg-doctools/blob/HEAD/LICENSE
+[egg-url]: https://eggjs.org/
+[npm-url]: https://www.npmjs.com/package/@eggjs/doctools
 
 > Doctools for Egg.js
 
@@ -7,12 +16,6 @@
 
 ```sh
 npm install @eggjs/doctools
-```
-
-## Run tests
-
-```sh
-npm run test
 ```
 
 ## Usage
