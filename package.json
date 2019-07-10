@@ -18,6 +18,7 @@
     "ci": "npm run clean && npm run lint && egg-bin cov"
   },
   "dependencies": {
+    "@eggjs/vuepress-theme-egg": "^0.1.6",
     "common-bin-plus": "^1.0.2",
     "cpy": "^7.3.0",
     "egg-utils": "^2.4.1",
