@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = {
-  title: 'Doctools For Egg.js',
+  siteConfig: {
+    title: 'Doctools For Egg.js',
+  },
   theme: '@vuepress/theme-default',
   // theme: '@eggjs/vuepress-theme-egg',
   markdown: {
