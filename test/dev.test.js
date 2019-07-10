@@ -12,7 +12,7 @@ describe('test/dev.test.js', () => {
   describe('doctools dev --help', () => {
     it('doctools dev --help', done => {
       coffee
-        .fork(bin, ['dev', '--help'], { cwd })
+        .fork(bin, [ 'dev', '--help' ], { cwd })
         // .debug()
         .expect('stdout', /Options:/)
         .expect('code', 0)
@@ -27,7 +27,7 @@ describe('test/dev.test.js', () => {
     let proc;
 
     before(async () => {
-      const c = coffee.fork(bin, ['dev', '--enableJsdoc=true'], { cwd });
+      const c = coffee.fork(bin, [ 'dev', '--enableJsdoc=true' ], { cwd });
       // c.debug();
       c.coverage(false);
       c.expect('code', 0 || null);
