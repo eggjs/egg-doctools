@@ -4,11 +4,11 @@ const path = require('path');
 const coffee = require('coffee');
 const pkg = require('../package.json');
 
-const bin = require.resolve('../bin/egg-doctools.js');
+const bin = require.resolve('../bin/doctools.js');
 const cwd = path.join(__dirname, 'fixtures/test-files');
 
 describe('test/index.test.js', () => {
-  it('egg-doctools --help', done => {
+  it('doctools --help', done => {
     coffee
       .fork(bin, [ '--help' ], { cwd })
       // .debug()
@@ -17,7 +17,7 @@ describe('test/index.test.js', () => {
       .end(done);
   });
 
-  it('egg-doctools --version', done => {
+  it('doctools --version', done => {
     coffee
       .fork(bin, [ '--version' ], { cwd })
       // .debug()

@@ -2,33 +2,36 @@
 
 const path = require('path');
 const coffee = require('coffee');
-const { sleep, rimraf } = require('mz-modules');
 const request = require('supertest');
+const { sleep, rimraf } = require('mz-modules');
 
-const bin = require.resolve('../bin/egg-doctools.js');
+const bin = require.resolve('../bin/doctools.js');
 const cwd = path.join(__dirname, 'fixtures/test-files');
 
-describe('test/server.test.js', () => {
-  describe('egg-doctools dev --help', () => {
-    it('egg-doctools dev --help', done => {
+describe('test/dev.test.js', () => {
+  describe('doctools dev --help', () => {
+    it('doctools dev --help', done => {
       coffee
-        .fork(bin, [ 'dev', '--help' ], { cwd })
+        .fork(bin, ['dev', '--help'], { cwd })
+        // .debug()
         .expect('stdout', /Options:/)
         .expect('code', 0)
         .end(done);
     });
   });
 
-  describe('egg-doctools dev --jsdoc=true', () => {
+  describe('doctools dev --enableJsdoc=true', () => {
     const url = 'http://localhost:8080';
-    const apiPath = path.join(cwd, 'docs/.vuepress/public/api');
+    const target = path.join(cwd, 'run');
+
     let proc;
 
     before(async () => {
-      const c = coffee.fork(bin, [ 'dev', '--jsdoc=true' ], { cwd });
+      const c = coffee.fork(bin, ['dev', '--enableJsdoc=true'], { cwd });
       // c.debug();
       c.coverage(false);
-      c.expect('code', 0).end();
+      c.expect('code', 0 || null);
+      c.end();
 
       // wait server listen
       await sleep(40000);
@@ -40,7 +43,7 @@ describe('test/server.test.js', () => {
     });
 
     after(async () => {
-      await rimraf(apiPath);
+      await rimraf(target);
     });
 
     it('request site index page', () => {

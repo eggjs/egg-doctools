@@ -1,5 +1,5 @@
 {
-  "name": "egg-doctools",
+  "name": "@eggjs/doctools",
   "version": "1.0.0",
   "description": "Doctools for Egg.js",
   "main": "index.js",
@@ -7,7 +7,7 @@
   "author": "Suyi <thonatos.yang@gmail.com>",
   "license": "MIT",
   "bin": {
-    "egg-doctools": "bin/egg-doctools.js"
+    "doctools": "bin/doctools.js"
   },
   "scripts": {
     "clean": "rimraf coverage",
@@ -19,6 +19,11 @@
   },
   "dependencies": {
     "common-bin-plus": "^1.0.2",
+    "cpy": "^7.3.0",
+    "egg-utils": "^2.4.1",
+    "gh-pages": "^2.0.1",
+    "mz": "^2.7.0",
+    "mz-modules": "^2.1.0",
     "vuepress": "^1.0.2"
   },
   "devDependencies": {
@@ -29,8 +34,6 @@
     "eslint": "^5.6.1",
     "eslint-config-egg": "^7.1.0",
     "mm": "^2.4.1",
-    "mz": "^2.7.0",
-    "mz-modules": "^2.1.0",
     "rimraf": "^2.6.2",
     "supertest": "^4.0.2"
   }

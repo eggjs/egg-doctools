@@ -19,13 +19,13 @@ npm run test
 
 ```bash
 # help
-egg-doctools --help
+doctools --help
 
 # dev
-egg-doctools dev
+doctools dev
 
 # build
-egg-doctools build
+doctools build
 ```
 
 ## Author
