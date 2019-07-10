@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Doctools for Egg.js",
   "main": "index.js",
-  "repository": "git@github.com:thonatos/egg-doctools.git",
+  "repository": "git@github.com:eggjs/egg-doctools.git",
   "author": "Suyi <thonatos.yang@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "doctools": "bin/doctools.js"
   },
