@@ -13,7 +13,9 @@ class DeployCommand extends Command {
   async run(ctx) {
     await super.run(ctx);
 
-    return this.deployGithub(ctx.argv);
+    const options = this.getConfig(ctx.argv);
+    await this.render('prod', options);
+    await this.deployGithub(ctx.argv);
   }
 
   async deployGithub({ baseDir, destDir }) {
