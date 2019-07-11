@@ -1,6 +1,6 @@
 {
   "name": "@eggjs/doctools",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Doctools for Egg.js",
   "main": "index.js",
   "repository": "git@github.com:eggjs/egg-doctools.git",
