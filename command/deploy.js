@@ -18,8 +18,10 @@ class DeployCommand extends Command {
     await this.deployGithub(ctx.argv);
   }
 
-  async deployGithub({ baseDir, destDir }) {
+  async deployGithub({ baseDir, destDir, githubToken }) {
     this.logger.info('deploy document');
+
+    const token = process.env.GITHUB_TOKEN;
 
     let commmitMsg = await runscript('git log --format=%B -n 1', {
       stdio: 'pipe',
@@ -35,6 +37,12 @@ class DeployCommand extends Command {
     repo = repo.stdout.toString().slice(0, -1);
     if (/^http/.test(repo)) {
       repo = repo.replace('https://github.com/', 'git@github.com:');
+    }
+
+    if (githubToken && token) {
+      // https://' + process.env.GH_TOKEN + '@github.com/user/private-repo.git',
+      repo.replace('git@github.com:', 'github.com/');
+      repo = `https://${token}@github.com/user/private-repo.git`;
     }
 
     this.logger.info('publish %s from %s to gh-pages', repo, destDir);
