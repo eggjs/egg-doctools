@@ -4,11 +4,6 @@ const Command = require('../lib/base');
 const publish = require('../lib/publish');
 const runscript = require('runscript');
 
-// The branch that pushing document
-const BRANCH = 'gh-pages';
-const DOC_PUBLISHER_NAME = 'Auto Doc Publisher';
-const DOC_PUBLISHER_EMAIL = 'docs@eggjs.org';
-
 class DeployCommand extends Command {
   async run(ctx) {
     await super.run(ctx);
@@ -18,7 +13,14 @@ class DeployCommand extends Command {
     await this.deployGithub(ctx.argv);
   }
 
-  async deployGithub({ baseDir, destDir, githubToken }) {
+  async deployGithub({
+    baseDir,
+    destDir,
+    githubToken,
+    deployBranch,
+    publisherName,
+    publisherMail,
+  }) {
     this.logger.info('deploy document');
 
     const token = process.env.GITHUB_TOKEN;
@@ -51,10 +53,10 @@ class DeployCommand extends Command {
         console.log(message);
       },
       user: {
-        name: DOC_PUBLISHER_NAME,
-        email: DOC_PUBLISHER_EMAIL,
+        name: publisherName,
+        email: publisherMail,
       },
-      branch: BRANCH,
+      branch: deployBranch,
       repo,
       message: commmitMsg,
     });
