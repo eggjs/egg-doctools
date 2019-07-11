@@ -41,8 +41,8 @@ class DeployCommand extends Command {
 
     if (githubToken && token) {
       // https://' + process.env.GH_TOKEN + '@github.com/user/private-repo.git',
-      repo.replace('git@github.com:', 'github.com/');
-      repo = `https://${token}@github.com/user/private-repo.git`;
+      repo = repo.replace('git@github.com:', 'github.com/');
+      repo = `https://${token}@${repo}`;
     }
 
     this.logger.info('publish %s from %s to gh-pages', repo, destDir);
