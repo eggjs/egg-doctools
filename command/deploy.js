@@ -47,7 +47,7 @@ class DeployCommand extends Command {
       repo = `https://${token}@${repo}`;
     }
 
-    this.logger.info('publish %s from %s to gh-pages', repo, destDir);
+    this.logger.info(`publish ${repo} from ${destDir} to ${deployBranch}`);
     await publish(destDir, {
       logger(message) {
         console.log(message);
