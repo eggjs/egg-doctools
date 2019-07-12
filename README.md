@@ -2,6 +2,7 @@
 
 [![Egg.js][egg-square]][egg-url]
 [![NPM Version][npm-square]][npm-url]
+[![Codecov][codecov-square]][codecov-url]
 
 [license-square]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [egg-square]: https://img.shields.io/badge/Awesome-Egg.js-ff69b4.svg?style=flat-square
@@ -9,6 +10,8 @@
 [license-url]: https://github.com/eggjs/egg-doctools/blob/HEAD/LICENSE
 [egg-url]: https://eggjs.org/
 [npm-url]: https://www.npmjs.com/package/@eggjs/doctools
+[codecov-square]: https://img.shields.io/codecov/c/github/eggjs/egg-doctools.svg?style=flat-square
+[codecov-url]: https://codecov.io/gh/eggjs/egg-doctools
 
 > Doctools for Egg.js
 
@@ -29,18 +32,7 @@ doctools dev
 
 # build
 doctools build
+
+# deploy
+doctools deploy
 ```
-
-## Author
-
-👤 **Suyi <thonatos.yang@gmail.com>**
-
-* Github: [@thoantos](https://github.com/thoantos)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
