@@ -18,7 +18,8 @@
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
     "cov": "egg-bin cov",
-    "ci": "npm run clean && npm run lint && egg-bin cov"
+    "ci": "npm run clean && npm run lint && egg-bin cov",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "@eggjs/vuepress-theme-egg": "^0.1.6",
@@ -42,6 +43,16 @@
     "eslint-config-egg": "^7.1.0",
     "mm": "^2.4.1",
     "rimraf": "^2.6.2",
+    "semantic-release": "^15.13.18",
     "supertest": "^4.0.2"
+  },
+  "release": {
+    "branche": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
