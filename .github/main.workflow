@@ -5,20 +5,20 @@ workflow "Push" {
 
 action "Installation" {
   needs = "Filters for GitHub Actions"
-  uses = "thonatos/github-actions-nodejs@v0.1.0"
-  args = "yarn"
+  uses = "thonatos/github-actions-nodejs@v0.1.1"
+  args = "npm install npminstall -g && npminstall"
 }
 
 action "CI" {
   needs = "Installation"
-  uses = "thonatos/github-actions-nodejs@v0.1.0"
-  args = "yarn ci"
+  uses = "thonatos/github-actions-nodejs@v0.1.1"
+  args = "npm run ci"
 }
 
 action "Deployment" {
   needs = "CI"
-  uses = "thonatos/github-actions-nodejs@v0.1.0"
-  args = "yarn semantic-release "
+  uses = "thonatos/github-actions-nodejs@v0.1.1"
+  args = "npm run semantic-release "
   secrets = ["GITHUB_TOKEN", "NPM_TOKEN"]
 }
 
