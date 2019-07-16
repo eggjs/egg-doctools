@@ -5,19 +5,19 @@ workflow "Push" {
 
 action "Installation" {
   needs = "Filters for GitHub Actions"
-  uses = "./.github/actions-node/"
+  uses = "thonatos/github-actions-nodejs@v0.1.0"
   args = "yarn"
 }
 
 action "CI" {
   needs = "Installation"
-  uses = "./.github/actions-node/"
+  uses = "thonatos/github-actions-nodejs@v0.1.0"
   args = "yarn ci"
 }
 
 action "Deployment" {
   needs = "CI"
-  uses = "./.github/actions-node/"
+  uses = "thonatos/github-actions-nodejs@v0.1.0"
   args = "yarn semantic-release "
   secrets = ["GITHUB_TOKEN", "NPM_TOKEN"]
 }
